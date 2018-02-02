@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -70,8 +72,35 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            <div class="row">
+                @if(Auth::check())
+                <div class="col-lg-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                           <a href="{{ route('home') }}">Home</a> 
+                        </li>
 
-        @yield('content')
+                        <li class="list-group-item">
+                           <a href="{{ route('categories') }}">Categories</a> 
+                        </li>
+
+                        <li class="list-group-item">
+                           <a href="{{ route('category.create') }}">Create New Category</a> 
+                        </li>
+
+                        <li class="list-group-item">
+                            <a href="{{ route('post.create') }}">Create New Post</a>
+                        </li>
+                    </ul>
+                </div>
+                @endif
+                <div class="col-lg-8">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <!-- Scripts -->
